@@ -3,19 +3,13 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { RestaurantMenu } from '@mui/icons-material';
 
-const pages = ['Tables', 'Menu', 'Order', 'Sales'];
+const pages = ["Tables", "Menu", "Orders", "Sales"];
 
-function AppBarMenu() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+function AppBarMenu(handleOnclick) {
 
   return (
     <>
@@ -45,7 +39,7 @@ function AppBarMenu() {
               {pages.map((page) => (
                 <Button
                   key={page}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => handleOnclick(page)}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page}

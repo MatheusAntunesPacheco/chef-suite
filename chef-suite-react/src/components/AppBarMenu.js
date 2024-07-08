@@ -9,7 +9,7 @@ import { RestaurantMenu } from '@mui/icons-material';
 
 const pages = ["Tables", "Menu", "Orders", "Sales"];
 
-function AppBarMenu(handleOnclick) {
+function AppBarMenu({onClickMenuButton}) {
 
   return (
     <>
@@ -39,7 +39,7 @@ function AppBarMenu(handleOnclick) {
               {pages.map((page) => (
                 <Button
                   key={page}
-                  onClick={() => handleOnclick(page)}
+                  onClick={() => onClickMenuButton(page)}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {page}

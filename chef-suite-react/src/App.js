@@ -1,15 +1,15 @@
 import * as React from 'react';
 import AppBarMenu from './components/AppBarMenu';
 
-function App() {
+function handleChangePage(page){
+  alert(page);
+}
 
-  function handleOnClickAppBarMenu(page){
-    alert(page);
-  }
+function App() {
 
   return (
     <>
-      <AppBarMenu {...handleOnClickAppBarMenu}/>
+      <AppBarMenu onClickMenuButton={handleChangePage} />
     </>
   );
 }

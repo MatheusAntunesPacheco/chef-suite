@@ -7,9 +7,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { RestaurantMenu } from '@mui/icons-material';
 
-const pages = ["Tables", "Menu", "Orders", "Sales"];
-
-function AppBarMenu({onClickMenuButton}) {
+function AppBarComponent({onClickMenuButton, pages}) {
 
   return (
     <>
@@ -52,4 +50,4 @@ function AppBarMenu({onClickMenuButton}) {
     </>
   );
 }
-export default AppBarMenu;
+export default AppBarComponent;

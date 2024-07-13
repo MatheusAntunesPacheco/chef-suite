@@ -29,9 +29,7 @@ function AppBarComponent({onClickMenuButton, pages}) {
                 color: 'inherit',
                 textDecoration: 'none',
               }}
-            >
-              Chef Suite
-            </Typography>
+            >Chef Suite</Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (

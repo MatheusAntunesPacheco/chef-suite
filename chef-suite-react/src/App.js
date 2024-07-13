@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AppBarComponent from './components/AppBarComponent';
 
 import SalesPage from './pages/SalesPage';
-import TablesPage from './pages/TablesPage';
+import TablesPage from './pages/Tables/index';
 import OrdersPage from './pages/OrdersPage';
 import MenuPage from './pages/MenuPage';
 

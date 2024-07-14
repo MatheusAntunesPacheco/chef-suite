@@ -1,31 +1,10 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+import React from 'react';
+import { Box, Collapse, IconButton, Typography, Paper } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
-const tablesData = [
-    { id: '1', size: '4'},
-    { id: '2', size: '2'},
-    { id: '3', size: '6'},
-    { id: '4', size: '4'},
-    { id: '5', size: '6'},
-    { id: '6', size: '10'},
-    { id: '7', size: '4'},
-    { id: '8', size: '4'},
-    { id: '9', size: '4'},
-    { id: '10', size: '2'}
-]
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function groupTablesBySize(tablesList){
     let groupedTable = tablesList.reduce((tablesBySize, { size, id }) => {
@@ -48,7 +27,7 @@ function groupTablesBySize(tablesList){
 }
   
 function Row(props) {
-    const { row } = props;
+    const { row, removeTable } = props;
     const [open, setOpen] = React.useState(false);
 
     return (
@@ -63,65 +42,59 @@ function Row(props) {
                     {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                 </IconButton>
             </TableCell>
-            <TableCell align="right">Tables for {row.size} people</TableCell>
-            <TableCell align="right">{row.tables.length} tables</TableCell>
+            <TableCell align="center">Tables for {row.size} people</TableCell>
+            <TableCell align="center">{row.tables.length} tables</TableCell>
         </TableRow>
         <TableRow>
-            <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <Box sx={{ margin: 1 }}>
-                <Typography variant="h6" gutterBottom component="div">
-                    Tables List
-                </Typography>
-                <Table size="small" aria-label="purchases">
-                    <TableHead>
-                    <TableRow>
-                        <TableCell>Table id</TableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {row.tables.map((table) => (
-                            <TableRow key={table}>
-                                <TableCell component="th" scope="row">
-                                    Table nº {table}
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-                </Box>
-            </Collapse>
+            <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} align="center">
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <Box sx={{ margin: 1 }}>
+                    <Typography variant="h6" gutterBottom component="div">
+                        List of Tables
+                    </Typography>
+                    <Table size="small" aria-label="purchases">
+                        <TableBody>
+                            {row.tables.map((table) => (
+                                <TableRow key={table}>
+                                    <TableCell component="th" scope="row" align="center">
+                                        Table {table}
+                                    </TableCell>
+                                    <TableCell component="th" scope="row" align="center">
+                                        <IconButton aria-label="delete" onClick={() => removeTable(table)}><DeleteIcon /></IconButton>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                    </Box>
+                </Collapse>
             </TableCell>
         </TableRow>
         </React.Fragment>
     );
 }
 
-function TableList(){
-    const [tablesList, setTablesList] = useState(tablesData);
+export default function TableList({tablesList, removeTable}){
 
     var groupTables = groupTablesBySize(tablesList);
-    console.log(groupTables);
 
     return (
         <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
             <TableHead>
                 <TableRow>
-                <TableCell />
-                <TableCell align="right">Table size</TableCell>
-                <TableCell align="right">Amount</TableCell>
+                    <TableCell />
+                    <TableCell align="center">Table size</TableCell>
+                    <TableCell align="center">Amount</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
                 {
                     groupTables.map((row) => (
-                    <Row key={row.size} row={row} />
+                    <Row key={row.size} row={row} removeTable={removeTable} />
                 ))}
             </TableBody>
             </Table>
         </TableContainer>
       );
 }
-
-export default TableList;

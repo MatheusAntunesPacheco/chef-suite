@@ -1,13 +1,22 @@
 import React from 'react';
-import App from './App';
 import { createRoot } from 'react-dom/client';
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+
+import App from './App';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'sans-serif',
+    color: 'inherit',
+    textDecoration: 'none'
+  }
+});
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-  <App />
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
 );

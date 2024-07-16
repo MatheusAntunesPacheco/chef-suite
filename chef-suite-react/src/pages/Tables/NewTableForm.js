@@ -1,5 +1,5 @@
 import React, { useState, memo } from 'react';
-import { Box, TextField, Button, Grid } from '@mui/material';
+import { Box, TextField, Button, Grid, Typography } from '@mui/material';
 
 import ClearAllRoundedIcon from '@mui/icons-material/ClearAllRounded';
 import DoneOutlineRoundedIcon from '@mui/icons-material/DoneOutlineRounded';
@@ -35,6 +35,13 @@ const NewTableForm = memo(({validateNewTable, addNewTable}) => {
         <Box sx={{ flexGrow: 1 }}>
             <form>
                 <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                    <Typography variant="h5" gutterBottom align="center"
+                        sx={{
+                            letterSpacing: '.1rem',
+                          }}
+                    >New Table</Typography>
+                    </Grid>
                     <Grid item xs={12}>
                         <TextField
                             required

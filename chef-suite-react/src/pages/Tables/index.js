@@ -2,27 +2,29 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Box, Grid } from '@mui/material';
 
 import NewTableForm from "./NewTableForm";
+
+import BffService from '../../services/BffService';
+
 const TableList = lazy(() => import('./TableList'));
 
-const tables = [
-    { id: '1', size: '4'},
-    { id: '2', size: '2'},
-    { id: '3', size: '6'},
-    { id: '4', size: '4'},
-    { id: '5', size: '6'},
-    { id: '6', size: '10'},
-    { id: '7', size: '4'},
-    { id: '8', size: '4'},
-    { id: '9', size: '4'},
-    { id: '10', size: '2'}
-]
-
 export default function TablesPage({openSnackBar}){
-    const [tablesList, setTablesList] = useState(null);
+    const [tablesList, setTablesList] = useState([]);
 
     useEffect(() => {
-        setTablesList(tables);
-    });
+        async function fetchData(){
+            try{
+                console.log("Consultando API");
+                const data = await BffService.getTableList();
+                console.log("Retorno API: " + data);
+                setTablesList(data);
+            }
+            catch(error){
+                console.log("Error on call API: " + error);
+            }
+        }
+
+        fetchData();
+    }, []);
 
     function addNewTable(newTableId, newTableSize) {
         setTablesList([...tablesList, { id: newTableId, size: newTableSize }]);

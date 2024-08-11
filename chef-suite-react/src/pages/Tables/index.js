@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Box, Grid } from '@mui/material';
 
 import NewTableForm from "./NewTableForm";
@@ -18,8 +18,11 @@ const tables = [
 ]
 
 export default function TablesPage({openSnackBar}){
-    const [tablesList, setTablesList] = useState(tables);
-    console.log(openSnackBar);
+    const [tablesList, setTablesList] = useState(null);
+
+    useEffect(() => {
+        setTablesList(tables);
+    });
 
     function addNewTable(newTableId, newTableSize) {
         setTablesList([...tablesList, { id: newTableId, size: newTableSize }]);

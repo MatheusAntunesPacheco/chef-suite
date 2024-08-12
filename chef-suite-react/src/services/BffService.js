@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://localhost5050' // TODO include on config file
+    baseURL: 'http://localhost:5105' // TODO include on config file
 })
 
 class BffService {

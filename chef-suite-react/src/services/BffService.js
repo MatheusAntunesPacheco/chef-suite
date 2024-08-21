@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080' // TODO include on config file
+    baseURL: process.env.REACT_APP_SERVER_URL
 })
 
 class BffService {
     async getTableList(){
         try{
-            
+            console.log('AlÁ: ' + process.env.REACT_APP_SERVER_URL);
             const response = await api.get('/tables');
             return response.data
         }
@@ -18,4 +18,5 @@ class BffService {
     }
 }
 
-export default new BffService();
+const bffServiceInstance = new BffService();
+export default bffServiceInstance;

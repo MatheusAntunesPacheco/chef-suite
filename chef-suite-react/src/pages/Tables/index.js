@@ -13,9 +13,9 @@ export default function TablesPage({openSnackBar}){
     useEffect(() => {
         async function fetchData(){
             try{
-                console.log("Consultando API");
+                console.log(process.env.SERVER_URL);
                 const data = await BffService.getTableList();
-                console.log("Retorno API: " + data);
+                console.log(process.env.SERVER_URL);
                 setTablesList(data);
             }
             catch(error){

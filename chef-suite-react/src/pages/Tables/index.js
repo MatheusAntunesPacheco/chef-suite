@@ -1,5 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Box, Grid } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import NewTableForm from "./NewTableForm";
 
@@ -8,6 +9,7 @@ import BffService from '../../services/BffService';
 const TableList = lazy(() => import('./TableList'));
 
 export default function TablesPage({openSnackBar}){
+    const { t } = useTranslation();
     const [tablesList, setTablesList] = useState([]);
 
     useEffect(() => {
@@ -28,17 +30,17 @@ export default function TablesPage({openSnackBar}){
 
     function addNewTable(newTableId, newTableSize) {
         setTablesList([...tablesList, { id: newTableId, size: newTableSize }]);
-        openSnackBar('Table ' + newTableId + ' registered successfully', 'success');
+        openSnackBar(t('tables.successRegistered', { id: newTableId }), 'success');
     }
 
     function removeTable(tableId) {
         setTablesList(t => t.filter(table => table.id !== tableId));
-        openSnackBar('Table ' + tableId + ' successfully removed', 'success');
+        openSnackBar(t('tables.successRemoved', { id: tableId }), 'success');
     }
 
     function validateNewTable(newTableId) {
         if (tablesList.some(table => table.id === newTableId)){
-            openSnackBar('Already existing Table ' + newTableId, 'error');
+            openSnackBar(t('tables.errorExisting', { id: newTableId }), 'error');
             return false;
         }
         

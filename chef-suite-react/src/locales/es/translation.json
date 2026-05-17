@@ -1,0 +1,33 @@
+{
+  "menu": {
+    "tables": "Mesas",
+    "menu": "Menú",
+    "orders": "Pedidos",
+    "sales": "Ventas"
+  },
+  "tables": {
+    "title": "Nueva Mesa",
+    "tableId": "ID de la Mesa",
+    "tableSize": "Tamaño de la Mesa",
+    "clear": "Limpiar",
+    "save": "Guardar",
+    "listTitle": "Lista de Mesas",
+    "tableSizeHeader": "Tamaño de la mesa",
+    "amountHeader": "Cantidad",
+    "tablesForPeople": "Mesas para {{size}} personas",
+    "tablesCount": "{{count}} mesas",
+    "tableItem": "Mesa {{id}}",
+    "successRegistered": "Mesa {{id}} registrada con éxito",
+    "successRemoved": "Mesa {{id}} eliminada con éxito",
+    "errorExisting": "La mesa {{id}} ya existe"
+  },
+  "sales": {
+    "title": "Hola Ventas"
+  },
+  "menuPage": {
+    "title": "Hola Menú"
+  },
+  "orders": {
+    "title": "Hola Pedidos"
+  }
+}

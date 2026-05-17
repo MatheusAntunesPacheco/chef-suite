@@ -1,0 +1,33 @@
+{
+  "menu": {
+    "tables": "Tables",
+    "menu": "Menu",
+    "orders": "Orders",
+    "sales": "Sales"
+  },
+  "tables": {
+    "title": "New Table",
+    "tableId": "Table ID",
+    "tableSize": "Table Size",
+    "clear": "Clear",
+    "save": "Save",
+    "listTitle": "List of Tables",
+    "tableSizeHeader": "Table size",
+    "amountHeader": "Amount",
+    "tablesForPeople": "Tables for {{size}} people",
+    "tablesCount": "{{count}} tables",
+    "tableItem": "Table {{id}}",
+    "successRegistered": "Table {{id}} registered successfully",
+    "successRemoved": "Table {{id}} successfully removed",
+    "errorExisting": "Already existing Table {{id}}"
+  },
+  "sales": {
+    "title": "Hello Sales"
+  },
+  "menuPage": {
+    "title": "Hello Menu"
+  },
+  "orders": {
+    "title": "Hello Orders"
+  }
+}

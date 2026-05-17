@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Collapse, IconButton, Typography, Paper } from '@mui/material';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -29,6 +30,7 @@ function groupTablesBySize(tablesList){
 function Row(props) {
     const { row, removeTable } = props;
     const [open, setOpen] = React.useState(false);
+    const { t } = useTranslation();
 
     return (
         <React.Fragment>
@@ -42,22 +44,22 @@ function Row(props) {
                     {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                 </IconButton>
             </TableCell>
-            <TableCell align="center">Tables for {row.size} people</TableCell>
-            <TableCell align="center">{row.tables.length} tables</TableCell>
+            <TableCell align="center">{t('tables.tablesForPeople', { size: row.size })}</TableCell>
+            <TableCell align="center">{t('tables.tablesCount', { count: row.tables.length })}</TableCell>
         </TableRow>
         <TableRow>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6} align="center">
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <Box sx={{ margin: 1 }}>
                     <Typography variant="h6" gutterBottom component="div">
-                        List of Tables
+                        {t('tables.listTitle')}
                     </Typography>
                     <Table size="small" aria-label="purchases">
                         <TableBody>
                             {row.tables.map((table) => (
                                 <TableRow key={table}>
                                     <TableCell component="th" scope="row" align="center">
-                                        Table {table}
+                                        {t('tables.tableItem', { id: table })}
                                     </TableCell>
                                     <TableCell component="th" scope="row" align="center">
                                         <IconButton aria-label="delete" onClick={() => removeTable(table)}><DeleteIcon /></IconButton>
@@ -75,7 +77,7 @@ function Row(props) {
 }
 
 export default function TableList({tablesList, removeTable}){
-
+    const { t } = useTranslation();
     var groupTables = groupTablesBySize(tablesList);
 
     return (
@@ -84,8 +86,8 @@ export default function TableList({tablesList, removeTable}){
             <TableHead>
                 <TableRow>
                     <TableCell />
-                    <TableCell align="center">Table size</TableCell>
-                    <TableCell align="center">Amount</TableCell>
+                    <TableCell align="center">{t('tables.tableSizeHeader')}</TableCell>
+                    <TableCell align="center">{t('tables.amountHeader')}</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>

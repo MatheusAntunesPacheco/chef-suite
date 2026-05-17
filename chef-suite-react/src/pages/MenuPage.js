@@ -1,4 +1,8 @@
 
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 export default function MenuPage(){
-    return (<h1>Olá Menu</h1>);
+    const { t } = useTranslation();
+    return (<h1>{t('menuPage.title')}</h1>);
 }

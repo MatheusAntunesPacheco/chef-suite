@@ -5,6 +5,7 @@ import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
 
 import App from './App';
+import './i18n';
 
 const theme = createTheme({
   typography: {

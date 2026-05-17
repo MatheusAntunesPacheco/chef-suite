@@ -1,10 +1,12 @@
 import React, { useState, memo } from 'react';
 import { Box, TextField, Button, Grid, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import ClearAllRoundedIcon from '@mui/icons-material/ClearAllRounded';
 import DoneOutlineRoundedIcon from '@mui/icons-material/DoneOutlineRounded';
 
 const NewTableForm = memo(({validateNewTable, addNewTable}) => {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({ newTable_tableId: '', newTable_tableSize: '' });
 
     const handleClearForm = () => {
@@ -40,14 +42,14 @@ const NewTableForm = memo(({validateNewTable, addNewTable}) => {
                         sx={{
                             letterSpacing: '.1rem',
                           }}
-                    >New Table</Typography>
+                    >{t('tables.title')}</Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
                             required
                             id="newTable_tableId"
                             name="newTable_tableId"
-                            label="Table ID"
+                            label={t('tables.tableId')}
                             variant="standard"
                             value={formData.newTable_tableId}
                             onChange={handleChangeForm}
@@ -62,7 +64,7 @@ const NewTableForm = memo(({validateNewTable, addNewTable}) => {
                             required
                             id="newTable_tableSize"
                             name="newTable_tableSize"
-                            label="Table Size"
+                            label={t('tables.tableSize')}
                             type="number"
                             variant="standard"
                             value={formData.newTable_tableSize}
@@ -82,7 +84,7 @@ const NewTableForm = memo(({validateNewTable, addNewTable}) => {
                                 onClick={handleClearForm}
                                 disabled={formData.newTable_tableSize==='' && formData.newTable_tableId===''}>
                                 
-                                Clear
+                                {t('tables.clear')}
                             </Button>
                         </Grid>
                         <Grid item>
@@ -93,7 +95,7 @@ const NewTableForm = memo(({validateNewTable, addNewTable}) => {
                                 onClick={handleSubmitButton}
                                 disabled={formData.newTable_tableSize==='' || formData.newTable_tableId===''}>
                                     
-                                Save
+                                {t('tables.save')}
                             </Button>
                         </Grid>
                     </Grid>

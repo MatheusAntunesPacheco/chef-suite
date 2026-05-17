@@ -1,4 +1,8 @@
 
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 export default function SalesPage(){
-    return (<h1>Olá Sales</h1>);
+    const { t } = useTranslation();
+    return (<h1>{t('sales.title')}</h1>);
 }
